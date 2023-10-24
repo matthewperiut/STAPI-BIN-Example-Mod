@@ -1,4 +1,4 @@
-# Babric Example Mod
+# Babric STAPI Example Mod
 
 ## Setup
 

@@ -17,6 +17,10 @@ loom {
 
 repositories {
     maven {
+        name = 'Froge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+    maven {
         name = 'Babric'
         url = 'https://maven.glass-launcher.net/babric'
     }
@@ -29,11 +33,20 @@ repositories {
         url = 'https://maven.glass-launcher.net/releases'
     }
     maven {
-        name = "Jitpack"
-        url "https://jitpack.io/"
+        name = 'Jitpack'
+        url = 'https://jitpack.io/'
     }
-    maven {
-        url 'https://maven.minecraftforge.net/'
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
@@ -52,7 +65,10 @@ dependencies {
     modLocalRuntime("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
         transitive false
     }
-    modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:5.0.12") {
+    modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.hmi_version}") {
+        transitive false
+    }
+    modLocalRuntime("com.github.matthewperiut:spc-babric:${project.spc_version}") {
         transitive false
     }
 }
